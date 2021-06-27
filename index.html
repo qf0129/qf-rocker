@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+    *{
+        padding: 0;
+        margin: 0;
+    }
+        .rocker_container{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 100px;
+            border: 1px solid #999;
+        }
+        .rocker_dot{
+            position: absolute;
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background: #666;
+        }
+    </style>
+</head>
+<body>
+    <div style="height: 123px;background: #aaa;">aaaccc</div>
+<div class="rocker_container">
+    <div class="rocker_dot"></div>
+</div>
+
+<script type="text/javascript">
+    var container = document.querySelector('.rocker_container');
+    var dot = document.querySelector('.rocker_dot');
+
+    // var container_top = container
+    console.log(getComputedStyle(container, null));
+    console.log(getComputedStyle(container, null).top);
+    var container_w = parseInt(getComputedStyle(container, null).width);
+    var container_h = parseInt(getComputedStyle(container, null).height);
+    var dot_w = parseInt(getComputedStyle(dot, null).width);
+    var dot_h = parseInt(getComputedStyle(dot, null).height);
+
+    var is_click = false;
+    var click_x = 0, click_y = 0;
+    reset_loc();
+
+    dot.onmousedown = function(e){
+        is_click = true;
+        click_x = e.offsetX;
+        click_y = e.offsetY;
+    };
+    dot.onmouseup=function(e){
+        reset_loc()
+    };
+    dot.onmouseleave = function(e){
+        reset_loc()
+    }
+    dot.onmousemove = function(e){
+        if (!is_click){return};
+        dot.style.top = e.clientY - click_y + 'px';
+        dot.style.left = e.clientX - click_x + 'px';
+        dot.style.backgroundColor = 'red';
+    };
+    function reset_loc(){
+        is_click = false;
+        dot.style.top = (container_h - dot_h)/2 + 'px';
+        dot.style.left = (container_w - dot_w)/2 + 'px';
+        dot.style.backgroundColor = '#666';
+    }
+
+</script>
+</body>
+</html>

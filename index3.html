@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript" src="qfrocker.js"></script>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin:0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="test_rocker_1" style="width: 80px;"></div>
+<div id="test_rocker_2""></div>
+<div id="test_rocker_3""></div>
+
+<script type="text/javascript">
+    
+    var test_rocker = QfRocker("test_rocker_1", {
+        shape:'circle',
+        width:'100px'
+    });
+    var test_rocker = QfRocker("test_rocker_2", {
+        shape:'line_h',
+        width:'100px',
+        height:'50px'
+    });
+    var test_rocker = QfRocker("test_rocker_3", {
+        shape:'line',
+        width:'50px',
+        height:'100px'
+    });
+
+
+</script>
+</body>
+</html>
